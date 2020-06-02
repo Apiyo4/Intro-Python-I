@@ -30,3 +30,23 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+def both_args():
+  val = input("Enter month followed by year ")
+  if not val:
+    to_day = datetime.today()
+    today_str = to_day.strftime("%d %m %y")
+    today_list = today_str.split(' ')
+    year =  int(today_list[2])
+    month = int(today_list[1])
+    return (calendar.month(year, month))
+    
+  else:
+    date_arr = val.split(' ')
+    if len(date_arr)==2:
+      print(calendar.month(int(date_arr[1]), int(date_arr[0])))
+    elif len(date_arr) == 1:
+      print(calendar.month(2020, int(date_arr[0])))
+    else:
+      print("Wrong format, enter month then year without any punctuation")
+  
+print(both_args()) 
